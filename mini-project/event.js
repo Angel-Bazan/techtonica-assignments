@@ -2,15 +2,18 @@ class Event {
     constructor(name, description) {
       this.name = name;
       this.description = description;
-      this.text = '';
+      this.text = ''; //added a text to modify the description 
       this.availableTickets = [];
     
    }
+
+   //created new tickets type w/ name and price
    addAvailableTickets (typeName, typePrice) {
     const typeObj1  = new TicketType(typeName, typePrice);
     this.availableTickets.push(typeObj1);
     }
 
+  //Printed all tickets and display tickets on HTML
    allTickets() {
     this.text += `<br><b>All tickets: </b></br>`;
     for(let i = 0; i < this.availableTickets.length; i++) {
@@ -20,16 +23,17 @@ class Event {
     this.description += this.text;
     }
 
+    //Searched tickets with lower and upper bound 
     searchTickets(lower, upper){
-    let count = 1; 
-    this.text = `<br><b>Available tickets:</b></br>`;
-    for(let i = 0; i < this.availableTickets.length; i++) {
-        if(this.availableTickets[i].price >= lower && this.availableTickets[i].price <= upper) {
+    let count = 1; //count all matching tickets
+    this.text = `<br><b>Available tickets:</b></br>`; //default text 
+    for(let i = 0; i < this.availableTickets.length; i++) { //iterates through available Tickets 
+        if(this.availableTickets[i].price >= lower && this.availableTickets[i].price <= upper) { //if range for all tickets 
             count++; 
             this.text += `<li>${count}. ${this.availableTickets[i].name} ($${this.availableTickets[i].price}) <br>`;
         }
-        else if(count === 1 && i === (this.availableTickets.length - 1)) {
-            this.text = "<br><b>No tickets available</b></br>"
+        else if(count === 1 && i === (this.availableTickets.length - 1)) { //if no match found and at the end of the array 
+            this.text = "<br><b>No tickets available</b></br>" //set text to no tickets available 
         }
 
     }
@@ -38,7 +42,7 @@ class Event {
 
 }
 
-
+//ticket type constructor 
   class TicketType {
     constructor(name, price) {
       this.name = name;
@@ -46,10 +50,12 @@ class Event {
     }
 }
 
+//create new events with names and description 
 const eventObj1 = new Event('KLOS Golden Gala','An evening with hollywood vampires');
 const eventObj2 = new Event('Skillet & Sevendust', 'Victorious war tour');
 const eventObj3 = new Event('Jenny Lewis', 'On the line tour 2019'); 
 
+//adding ticket types and prices 
 eventObj1.addAvailableTickets("human", 299);
 eventObj1.addAvailableTickets("vampire", 99);
 eventObj2.addAvailableTickets("General Admission", 25)
