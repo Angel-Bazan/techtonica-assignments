@@ -27,6 +27,53 @@
     <title>React App</title>
   </head>
   <body>
+
+    <header class="container">
+      <h1>Techtonica OpenWeatherMap.org API</h1>
+    </header>
+    <nav class="container">
+      <div class="row align-items-center py-2">
+        <div class="input-group col-sm">
+          <span class="input-group-text" id="basic-addon1">City</span>
+          <input
+            type="text"
+            class="form-control"
+            inputmode="text"
+            id="city"
+            placeholder="city"
+            aria-label="city"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+      <div class="row align-items-center py-2">
+        <div class="col-auto me-auto">
+          <button id="btnGet" type="button" class="btn btn-primary mb-3">
+            Get Weather
+          </button>
+        </div>
+      </div>
+    </nav>
+    <main class="container">
+      <h2>Weather</h2>
+      <!-- results for weather data -->
+      <div class="weather row gx-2">
+        <div class="col">
+          <div class="card" id="weathercard" style="width: 30vw;">
+            <h5 class="card-title p-2">City:</h5>
+
+            <div class="card-body">
+              <h3 class="card-title">Weather Label</h3>
+              <p class="card-text">High Temp Low Temp</p>
+              <p class="card-text">HighFeels like</p>
+              <p class="card-text">Pressure</p>
+              <p class="card-text">Humidty</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

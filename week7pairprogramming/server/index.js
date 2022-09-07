@@ -11,15 +11,13 @@ app.get('/', (req, res) => {
     res.json("Hello from Techtonica")
 });
 
-app.get('/api/students', (req, res) => {
-    const STUDENTS = [
-        {firstname: "Lisa", lastname: "Lee"},
-        {firstname: "student2", lastname: "lastName2"}, 
-        {firstname: "student3", lastname: "lastName3"}, 
-        {firstname: "student4", lastname: "lastName4"}, 
+app.get('/api/weather', (req, res) => {
+    // Variable to store your API Key
+  const APIKEY = "91290aa34b77dd1517169822a284b6a8";
 
-    ]
+  // create the correct URL to fetch
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`;
 
-    res.json(STUDENTS);
+    res.json(url);
 });
 app.listen(PORT, () => console.log(`Hola! server running on port http://localhost:${PORT}`));
