@@ -45,16 +45,16 @@ const Weather = (props) => {
       <div className="weather row gx-2">
         <div className="col">
           <div className="card" id="weathercard" >
-            <h5 className="card-title p-2">City: {weather.city}</h5>
+            <h5 className="card-title p-2">City: {weather.name}</h5>
 
             <div className="card-body">
               <h3 className="card-title">Weather Label</h3>
-              <p className="card-text">High Temp:{weather.hightemp} Low Temp:{weather.lowtemp}</p>
-              <p className="card-text">Icon: {weather.current.weather.icon} 
-              <img src ={` http://openweathermap.org/img/wn/11d@2x.png`} 
-         alt="wthr img" /></p>
-              <p className="card-text">Pressure: {weather.current.pressure}</p>
-              <p className="card-text">Humidty: {weather.current.humidity}</p>
+              <p className="card-text">Temp_min:{weather.main.temp_min} Temp_max: {weather.main.temp_max}</p>
+              <p className="card-text">Icon: <img src ={` http://openweathermap.org/img/wn/04n@2x.png`}
+  alt="wthr img" />
+</p>
+              <p className="card-text">Pressure: {weather.main.pressure}</p>
+              <p className="card-text">Humidity:{weather.main.humidity} </p>
             </div>
           </div>
         </div>
