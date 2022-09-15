@@ -19,8 +19,8 @@ app.get('/', (req, res) => {
 });
 
 // this is a hard code since we are not fetching any api’s
-app.get('/api/categories', (req, res) => {
-    const url=`https://opentdb.com/api_category.php`; 
+app.get('/api/questions', (req, res) => {
+    const url=`https://opentdb.com/api.php?amount=10&category=17&type=multiple`; 
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
