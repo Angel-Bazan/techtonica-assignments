@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import Answer from "./answer.js";
 
 const QuestionCard = (props) => {
+  const [answers, setAnswers] = useState([]);
   const handleAnswerOnClick = (isCorrect_answer) => {
     props.onClick(
       isCorrect_answer
@@ -17,11 +19,20 @@ const QuestionCard = (props) => {
   //come up with set of answers that include of correct and incorrect answers
   //generate four answers
   //render four buttons corresponding to the four answers
-
-  const answers = [
-    ...props.question.incorrect_answers,
-    props.question.correct_answer,
-  ];
+  useEffect(
+    () =>
+      setAnswers(
+        [
+          ...props.question.incorrect_answers,
+          props.question.correct_answer,
+        ].sort(() => Math.random() - 0.5)
+      ),
+    [props.question.correct_answer]
+  );
+  // const answers = [
+  //   ...props.question.incorrect_answers,
+  //   props.question.correct_answer,
+  // ];
 
   //array destructuring for getting incorrect answers
   // const randNum = Math.floor(Math.random() * 3);
@@ -41,7 +52,6 @@ const QuestionCard = (props) => {
               question={props.question}
               onClick={handleAnswerOnClick}
               setScore={props.setScore}
-              
             />
           );
         })}
