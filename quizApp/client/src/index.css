@@ -5,9 +5,130 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #7cc6fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image:url("/Users/tpl522_14/techtonica/techtonica-assignments/quizApp/client/public/images/Untitled design (1).png");
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.textHeader{
+  font-family:cursive;
+}
+
+.input{
+  border-radius: 4px;
+}
+
+.question-text{
+  font-family: cursive;
+  font-size: larger;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+
+}
+span{
+  font-family: cursive;
+  font-size: x-large;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.send{
+  
+    background: #34d9a2;
+    background-image: -webkit-linear-gradient(top, #34d9a2, #2b7fb8);
+    background-image: -moz-linear-gradient(top, #34d9a2, #2b7fb8);
+    background-image: -ms-linear-gradient(top, #34d9a2, #2b7fb8);
+    background-image: -o-linear-gradient(top, #34d9a2, #2b7fb8);
+    background-image: linear-gradient(to bottom, #34d9a2, #2b7fb8);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 4px 18px 6px 20px;
+    text-decoration: none;
+    margin-left: 3px;
+  
+}
+.send:hover {
+  background: #cf43f2;
+  text-decoration: none;
+}
+
+.green {
+  background: #1cbf70;
+  background-image: -webkit-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: -moz-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: -ms-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: -o-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: linear-gradient(to bottom, #1cbf70, #35ded0);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 4px 16px 6px 20px;
+  text-decoration: none;
+  margin: 3px 3px 3px 3px;
+  
+}
+
+.red {
+  background: #a11220;
+  background-image: -webkit-linear-gradient(top, #a11220, #e03442);
+  background-image: -moz-linear-gradient(top, #a11220, #e03442);
+  background-image: -ms-linear-gradient(top, #a11220, #e03442);
+  background-image: -o-linear-gradient(top, #a11220, #e03442);
+  background-image: linear-gradient(to bottom, #a11220, #e03442);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 4px 16px 6px 20px;
+  text-decoration: none;
+  margin: 3px 3px 3px 3px;
+}
+.blue {
+  background: #2b7fb8;
+  background-image: -webkit-linear-gradient(top, #2b7fb8, #2b7fb8);
+  background-image: -moz-linear-gradient(top, #2b7fb8, #2b7fb8);
+  background-image: -ms-linear-gradient(top, #2b7fb8, #2b7fb8);
+  background-image: -o-linear-gradient(top, #2b7fb8, #2b7fb8);
+  background-image: linear-gradient(to bottom, #2b7fb8, #2b7fb8);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 18px;
+  font-family: Courier New;
+  color: white;
+  font-size: 15px;
+  padding: 4px 16px 6px 20px;
+  text-decoration: none;
+  margin: 3px 3px 3px 3px;
+
+}
+
+
+.blue:focus {
+  outline: none;
+}
+
+button svg {
+  margin-right: 5px;
+}  

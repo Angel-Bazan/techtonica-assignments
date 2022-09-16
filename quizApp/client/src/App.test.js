@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { getByTestId, render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  render(<Answer />)
+  const linkElement = screen.getByText(getByTestId);
+  expect(linkElement).toBeInTheDocument(); //assertion asserting that something is going to be true
 });

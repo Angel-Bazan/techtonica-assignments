@@ -1,5 +1,7 @@
 
-import Settings from './components/settings.js';
+import Header from './components/header.js';
+import UserForm from './components/user.js';
+import Game from './components/game.js';
 import './App.css';
 import { useState } from "react";
 
@@ -11,10 +13,14 @@ function App() {
 
   return (
     <div className="App">
-      <Settings />
-     
+    <Header user={user} />
+    <UserForm grabUser={handleUser} />
+    {user ? <Game /> : null}
+      
     </div>
   );
 }
 
 export default App;
+
+
