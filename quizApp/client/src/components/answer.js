@@ -3,17 +3,16 @@ import { useState } from "react";
 const Answer = (props) => {
   const [currentClass, setCurrentClass] = useState("blue");
   const [testCorrect, setTestCorrect] = useState(null);
-  //   const [score, setScore] = useState(0);
 
   function decodeHtml(html) {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;
   }
-  
-  const handleOnClick = () => {
 
-    props.onClick( props.e === props.question.correct_answer )
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    // props.onClick(props.e === props.question.correct_answer);
 
     setCurrentClass(
       props.e === props.question.correct_answer ? "green" : "red"
@@ -21,6 +20,7 @@ const Answer = (props) => {
     if (props.e === props.question.correct_answer) {
       setTestCorrect("YAY!");
       console.log(testCorrect);
+      props.setScore((s) => s + 1);
     }
   };
 
@@ -35,4 +35,4 @@ const Answer = (props) => {
 };
 
 export default Answer;
-//props 
+//props
