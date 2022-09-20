@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import DeleteEvent from "./deleteEvent"
 
 const event1 = {
   id: "1",
@@ -31,6 +32,9 @@ const initialState = {
   description: "",
   category: "",
 };
+function init(initialState){
+    return {id: "", name: "", date:""};
+ };
 
 const reducer = (state, action) => {
   console.log(action, "this is the action");
@@ -50,15 +54,19 @@ const reducer = (state, action) => {
 
     case "editDate":
       return { ...state, date: action.payload };
+    
+    case "reset":
+        return init(action.payload);
 
     default:
       return state;
   }
 };
 
+
 const Events = () => {
   const [events, setEvents] = useState([event1, event2, event3]);
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, init);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -144,6 +152,7 @@ const Events = () => {
           <input type="submit" />
         </form>
       </div>
+    <DeleteEvent events={events} setEvents={setEvents} />
     </section>
   );
 };

@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteUser from "./deleteUser.js";
 
-const marlin = { name: "Marlin", email: "marlin@gmail.com", id: "1" };
-const nemo = { name: "Nemo", email: "nemo@gmail.com", id: "2" };
-const dory = { name: "Dory", email: "dory@gmail.com", id: "3" };
+// const marlin = { name: "Marlin", email: "marlin@gmail.com", id: "1" };
+// const nemo = { name: "Nemo", email: "nemo@gmail.com", id: "2" };
+// const dory = { name: "Dory", email: "dory@gmail.com", id: "3" };
 
 const Users = () => {
-  const [users, setUsers] = useState([marlin, nemo, dory]);
+  const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ name: "", email: "", id: "" });
 
   const set = (input) => {
@@ -17,6 +17,17 @@ const Users = () => {
       }));
     };
   };
+
+  const getUsers = () => {
+    fetch('http://localhost:3000/users')
+      .then((res) => res.json())
+      .then((res) => setUsers(res.users));
+  };
+  
+  useEffect(() => {
+    // useEffect will run getUsers() every time this component loads, as opposed to just the first time it is rendered.
+    getUsers();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
