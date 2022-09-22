@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
 //values into the statements. Parameterized queries increase security and performance.
 
 router.delete('/:id', async (req, res) => {
-  // : acts as a placeholder
+
   const eventId = req.params.id;
   try {
     await db.none('DELETE FROM events WHERE id=$1', [eventId]);
