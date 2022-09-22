@@ -1,60 +1,87 @@
-import { useEffect, useState } from "react";
-import DeleteUser from "./deleteUser.js";
-
-// const marlin = { name: "Marlin", email: "marlin@gmail.com", id: "1" };
-// const nemo = { name: "Nemo", email: "nemo@gmail.com", id: "2" };
-// const dory = { name: "Dory", email: "dory@gmail.com", id: "3" };
+import React, { useEffect, useState } from "react";
+import { API_URL } from "../constants.js";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const [newUser, setNewUser] = useState({ name: "", email: "", id: "" });
 
-  const set = (input) => {
-    return ({ target: { value } }) => {
-      setNewUser((originalValues) => ({
-        ...originalValues,
-        [input]: value,
-      }));
-    };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
+
+  const getUsers = async () => {
+    const response = await fetch(`${API_URL}/users`);
+    const user = await response.json();
+    setUsers(user);
   };
 
-  const getUsers = () => {
-    fetch('http://localhost:3000/users')
-      .then((res) => res.json())
-      .then((res) => setUsers(res.users));
-  };
-  
   useEffect(() => {
-    // useEffect will run getUsers() every time this component loads, as opposed to just the first time it is rendered.
     getUsers();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newUser);
-    setNewUser({ name: "", email: "", id: "" });
-    setUsers([...users, newUser]);
+    const newUser = { id, name, email };
+    const rawResponse = await fetch(`${API_URL}/users`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    const content = await rawResponse.json();
+
+    setUsers([...users, content]);
+    setName("");
+    setEmail("");
+    setId("");
   };
 
-  const deleteUser = (deleteId) => {
-    const newUsers = users.filter((user) => user.id !== deleteId);
-    setUsers(newUsers);
+  // Delete a user
+  const DeleteUser = async (deleteUser) => {
+    let response = await fetch(`${API_URL}/users/${deleteUser}`, {
+      method: "DELETE",
+    });
+    await response.json();
+    // delete functionality
+    const deleteUsers = users.filter((user) => user.id !== deleteUser);
+    console.log(deleteUsers);
+    setUsers(deleteUsers);
   };
 
+  const usersRows = () => {
+    let headerElement = ["Id", "Name", "Email"];
+
+    return headerElement.map((ele, index) => {
+      return <th key={index}>{ele}</th>;
+    });
+  };
+
+  const usersList= () => {
+    return users.map((user) => {
+      return (
+        <tr key={user.id}>
+          <td>{user.id}</td>
+          <td>{user.name}</td>
+          <td>{user.email}</td>
+
+          <span className="material-symbols-outlined">
+            <button onClick={() => DeleteUser(user.id)}>Delete</button>
+          </span>
+        </tr>
+      );
+    });
+  };
   return (
     <section className="user-management">
       <h2>User Management</h2>
-
-      <ul id="users-list">
-        {/* display all existing Users here */}
-        {users.map((user, index) => {
-          return (
-            <li key={index}>
-              Name: {user.name}, E-mail: {user.email}
-            </li>
-          );
-        })}
-      </ul>
+      <h3>List of Users</h3>
+      <table className="listUser">
+        <thead>
+          <tr>{usersRows()}</tr>
+        </thead>
+        <tbody>{usersList()}</tbody>
+      </table>
 
       <div>
         <h3>Add User</h3>
@@ -64,31 +91,24 @@ const Users = () => {
             <input
               type="text"
               id="add-user-name"
-              name="name"
-              value={newUser.name} // changes the name
-              onChange={set("name")} // handlechange function
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
-            <label>E-mail</label>
+
+            <label>Email</label>
             <input
               type="text"
               id="add-user-email"
-              name="email"
-              value={newUser.email} // changes the email
-              onChange={set("email")} // handlechange function
-            />
-            <label>Id</label>
-            <input
-              type="text"
-              id="add-user-id"
-              value={newUser.id}
-              onChange={set("id")}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </fieldset>
           {/* Add more form fields here */}
           <input type="submit" value="Add" />
         </form>
       </div>
-      <DeleteUser deleteUser={deleteUser} />
     </section>
   );
 };

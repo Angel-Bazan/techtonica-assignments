@@ -1,15 +1,21 @@
 import { useState } from "react";
 
-const DeleteUser = ({ deleteUser }) => {
-  const [id, setId] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    deleteUser(id);
-  };
+const DeleteUser = ({users, setUsers}) => {
+    const [userId, setUserId] = useState("");
+  
+    const deleteUser = (e) => {
+      e.preventDefault();
+      if (!userId || userId < 1) {
+        alert("Please enter a valid user ID.");
+      }
+      const newUsers = users.filter((i) => i.id !== userId);
+      setUsers(newUsers);
+      setUserId("");
+    };
   return (
     <div>
       <h3>Delete User</h3>
-      <form id="delete-user" action="#" onSubmit={handleSubmit}>
+      <form id="delete-user" action="#" onSubmit={deleteUser}>
         <fieldset>
           <label>User ID</label>
           <input

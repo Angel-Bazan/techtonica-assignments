@@ -1,5 +1,6 @@
-import React, { useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import DeleteEvent from "./deleteEvent"
+import { API_URL } from "../constants.js"
 
 const event1 = {
   id: "1",
@@ -67,6 +68,19 @@ const reducer = (state, action) => {
 const Events = () => {
   const [events, setEvents] = useState([event1, event2, event3]);
   const [state, dispatch] = useReducer(reducer, initialState, init);
+
+  const getEvents = () => {
+    fetch(`${API_URL}/events`)
+      .then((res) => res.json())
+      .then((parsResponse) =>  setEvents(parsResponse))
+      .catch( (error) => console.log(error))
+      
+  };
+  
+  useEffect(() => {
+    // useEffect will run getUsers() every time this component loads, as opposed to just the first time it is rendered.
+    getEvents();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

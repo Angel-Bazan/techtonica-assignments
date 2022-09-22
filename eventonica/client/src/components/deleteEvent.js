@@ -3,14 +3,14 @@ const DeleteEvent = ({ events, setEvents }) => {
   const [eventId, setEventId] = useState("");
 
   const deleteEvent = (e) => {
-    e.preventDefault();
+    e.preventDefault();//if the event does not get handle it should not behave how it has to behave 
     if (!eventId) {
       alert("Please enter a valid event ID.");
     }
-    const newEvents = events.filter((i) => i.id !== eventId);
-    setEvents(newEvents);
-    localStorage.setItem("events", newEvents);
-    setEventId("");
+    const newEvents = events.filter((i) => i.id !== eventId);//filter all the eventId that are not the same as the id that is being inputted
+    setEvents(newEvents); //set Events to the newEvents 
+    localStorage.setItem("events", newEvents); //store the events useState 
+    setEventId(""); //Event Id starts blank 
   };
   return (
     <div>
