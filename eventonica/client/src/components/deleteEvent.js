@@ -26,7 +26,7 @@ const DeleteEvent = ({ events, setEvents }) => {
             onChange={(e) => setEventId(e.target.value)}
           />
         </fieldset>
-        <input type="submit" />
+        <input class="submit" type="submit" />
       </form>
     </div>
   );

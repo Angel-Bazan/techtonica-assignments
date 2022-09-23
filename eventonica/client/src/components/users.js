@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../constants.js";
-// import DeleteUser from "./DeleteUser";
 
-// const marlin = {name: "Marlin", email: "marlin@gmail.com", id: "1"};
-// const nemo = {name: "Nemo", email: "nemo@gmail.com", id: "2"};
-// const dory = {name: "Dory", email: "dory@gmail.com", id: "3"};
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -61,15 +57,15 @@ const Users = () => {
     <section className="user-management">
       <h2>User Management</h2>
 
-      <ul id="users-list">
+      <table id="users-list">
         {users.map((user, index) => {
           return (
-            <li key={index}>
-              <strong>ID:</strong> {user.id}
+            <tr key={index}>
+              <td><strong>ID:</strong> {user.id}</td>
               <br />
-              <strong>Name:</strong> {user.name}
+              <td><strong>Name:</strong> {user.name}</td>
               <br />
-              <strong>Email:</strong> {user.email}
+              <td><strong>Email:</strong> {user.email}</td>
             
             <br />
             <button>
@@ -79,10 +75,10 @@ const Users = () => {
                   delete
                 </span>
               </button>
-              </li>
+              </tr>
           );
         })}
-      </ul>
+      </table>
 
       <div>
         <h3>Add User</h3>
@@ -110,7 +106,7 @@ const Users = () => {
             </p>
       
           </fieldset>
-          <input type="submit" value="Add" onClick={handleSubmit} />
+          <input class="submit" type="submit" value="Add" onClick={handleSubmit} />
         </form>
       </div>
 

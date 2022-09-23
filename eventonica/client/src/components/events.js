@@ -91,17 +91,17 @@ const Events = () => {
       <h2>Event Management</h2>
       <div>
         <h3>All Events</h3>
-        <ul id="events-list">
+        <table id="events-list">
           {/* Display all Events here */}
           {events.map((event, index) => {
             return (
-              <li key={index}>
-                Id: {event.id}, Name: {event.name}, Date: {event.date},
-                Description: {event.description},
-              </li>
+              <tr key={index}>
+               <td> <strong>Id:</strong> {event.id}, <strong>Name:</strong> {event.name}, <strong>Date:</strong> {event.date},
+                <strong>Description:</strong> {event.description},</td>
+              </tr>
             );
           })}
-        </ul>
+        </table>
 
         <h3>Add Event</h3>
         <form id="add-event" action="#" onSubmit={handleSubmit}>
@@ -163,7 +163,7 @@ const Events = () => {
             />
           </fieldset>
           {/* Add more form fields here */}
-          <input type="submit" />
+          <input class="submit" type="submit" />
         </form>
       </div>
     <DeleteEvent events={events} setEvents={setEvents} />

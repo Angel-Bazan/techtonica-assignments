@@ -23,6 +23,15 @@ app.get("/users", async function (req, res, next) {
   }
 });
 
+app.get("/events", async function (req, res, next) {
+    try {
+      const users = await db.any('SELECT * FROM "EVENTS"');
+      res.send(users);
+    } catch (e) {
+      return res.status(400).json({ e });
+    }
+  });
+
 app.post("/users", async (req, res) => {
   const user = {
     name: req.body.name,

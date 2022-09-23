@@ -12,22 +12,22 @@ function App() {
       <main>
         <div className="user-and-events">
 
-        <section className="user-management">
+      
             
           <Users />
         
-          </section>
+         
 
-          <section className="event-management">
+          
            <Events />
-          </section>
+        
         </div>
 
       
 
         <aside className="search-toolbar">
           <div>
-            <h3>Find Events</h3>
+            {/* <h3>Find Events</h3>
             <form id="search" action="#">
               <fieldset>
                 <label htmlFor="date-search">Date</label>
@@ -39,24 +39,12 @@ function App() {
               </fieldset>
 
               <input type="submit" value="Search" />
-            </form>
+            </form> */}
           </div>
         </aside>
       </main>
       <Footer />
 
-      {/* <footer>
-        <div>
-          Star Calendar favicon made by
-          <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-            Freepik
-          </a>
-          Find your own on
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            FlatIcon.com
-          </a>
-        </div>
-      </footer> */}
     </div>
   );
 }

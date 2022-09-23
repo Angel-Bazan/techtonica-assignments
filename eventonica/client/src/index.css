@@ -1,13 +1,73 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("/Users/tpl522_14/techtonica/techtonica-assignments/eventonica/client/public/Untitled design (3).png");
+  /* color: rgb(241, 153, 253); */
+  color: rgb(12, 29, 0);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.material-symbols-outlined {
+  color: red;
+}
+
+.submit {
+  background: #1cbf70;
+  background-image: -webkit-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: -moz-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: -ms-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: -o-linear-gradient(top, #1cbf70, #35ded0);
+  background-image: linear-gradient(to bottom, #1cbf70, #35ded0);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 4px 16px 6px 20px;
+  text-decoration: none;
+  margin: 3px 3px 3px 3px;
+}
+input {
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+  /* color: #ffffff; */
+  font-size: 12px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
+.user-management {
+  background-color: rgb(164, 247, 222);
+  margin: auto;
+  width: 90%;
+  border: 3px solid green;
+  border-radius: 28px;
+  padding: 10px;
+  
+}
+.event-management {
+  background-color: rgb(164, 247, 222);
+  margin: auto;
+  margin-top: 25px;
+  width: 90%;
+  border: 3px solid green;
+  border-radius: 28px;
+  padding: 10px;
+  
+  
+
+}
+.App {
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: column;
+}
+
