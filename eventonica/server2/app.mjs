@@ -7,7 +7,7 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 
 import indexRouter from "./routes/index.mjs";
-import usersRouter from "./routes/Users.mjs";
+import usersRouter from "./routes/Users.mjs.js";
 import eventsRouter from "./routes/events.mjs"
 
 const app = express();
@@ -31,6 +31,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/events", eventsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

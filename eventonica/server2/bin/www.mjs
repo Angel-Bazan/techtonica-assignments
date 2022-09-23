@@ -1,6 +1,7 @@
-import app from "../app.mjs";
+// import app from "../app.mjs";
 import debug from "debug";
 import http from "http";
+import index from "../index.mjs"
 
 const port = normalizePort(process.env.PORT || "4000");
 app.set("port", port);

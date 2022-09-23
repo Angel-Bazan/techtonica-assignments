@@ -9,6 +9,18 @@ let mockUsers = [
   { id: 3, name: "Dory", email: "dory@gmail.com" },
 ];
 
+
+app.get("/:id", async function (req, res, next) {
+  const userId = req.params.id;
+  console.log(userId);
+  try {
+    await db.many("SELECT FROM users WHERE id=$1", [userId]);
+    res.send({ status: "success" });
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
 /* GET users listing. */
 router.get("/", async function (req, res, next) {
   try {
@@ -44,15 +56,17 @@ router.post("/", async (req, res) => {
 //Parameterized queries use placeholders instead of directly writing the
 //values into the statements. Parameterized queries increase security and performance.
 
-router.delete('/users/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   // : acts as a placeholder
   const userId = req.params.id;
+  console.log(userId)
   try {
-    await db.none('DELETE FROM "USERS" WHERE id=1', [userId]);
-    const users = await db.any('SELECT * FROM "USERS"');
-    // res.send({ status: "success" });
-    res.send(users);
+    await db.many('DELETE FROM "USERS" WHERE id=$1', [userId]);
+    // const users = await db.any('SELECT * FROM "USERS"');
+    res.send({ status: "success" });
+    // res.send(users);
   } catch (e) {
+    console.log(e)
     return res.status(400).json({ e });
   }
 });
